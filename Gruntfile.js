@@ -12,8 +12,13 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			my_target: {
+				options: {
+					banner: '/*\n<%= pkg.name %> - v<%= pkg.version %>\n' +
+						'<%= pkg.author.name %> <%= pkg.author.email %>\n' +
+						'<%= grunt.template.today("yyyy-mm-dd") %>\n*/\n'
+				},
 				files: {
-					'dist/jquery.jkanbanize.min.js': ['dist/jquery.jkanbanize.js'],
+					'dist/jkanbanize.min.js': ['dist/jkanbanize.js'],
 				}
 			}
 		},

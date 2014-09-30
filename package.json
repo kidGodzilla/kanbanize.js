@@ -2,6 +2,11 @@
   "name": "jKanbanize",
   "version": "0.0.0",
   "description": "a Kanbanize API javascript class wrapper",
+  "author": {
+    "name": "Carlo 'kj'",
+    "email": "carlo.panzi@gmail.com",
+    "url": "http://kajyr.github.io"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +26,7 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.11.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-uglify": "^0.6.0"
   }
 }
