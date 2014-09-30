@@ -1,5 +1,5 @@
 {
-  "name": "jKanbanize",
+  "name": "kanbanize.js",
   "version": "0.0.0",
   "description": "a Kanbanize API javascript class wrapper",
   "author": {

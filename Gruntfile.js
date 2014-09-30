@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		coffee: {
 			compile: {
 				files: {
-					'dist/jkanbanize.js': ['src/jkanbanize.coffee']
+					'dist/kanbanize.js': ['src/kanbanize.coffee']
 				}
 			},
 		},
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 						'<%= grunt.template.today("yyyy-mm-dd") %>\n*/\n'
 				},
 				files: {
-					'dist/jkanbanize.min.js': ['dist/jkanbanize.js'],
+					'dist/kanbanize.min.js': ['dist/kanbanize.js'],
 				}
 			}
 		},
