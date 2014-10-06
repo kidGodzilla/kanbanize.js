@@ -23,17 +23,11 @@
     };
 
     KanbanizeJS.prototype.call = function(apiCall) {
-      var call, l;
+      var l, url, xmlhttp;
       if (apiCall["function"] !== 'login' && (this.apikey == null)) {
         l = this.login();
         this.apikey = l.apikey;
       }
-      call = this._executeCall(apiCall);
-      return call.getResponseDecoded();
-    };
-
-    KanbanizeJS.prototype._executeCall = function(apiCall) {
-      var url, xmlhttp;
       url = this._getUrl(apiCall);
       xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {

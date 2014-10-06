@@ -14,17 +14,10 @@ class KanbanizeJS
 
 	call: (apiCall) ->
 
-		
 		if apiCall.function != 'login' && !@apikey?
 			l = @login()
 			@apikey = l.apikey
 
-		call = @_executeCall(apiCall)
-
-		return call.getResponseDecoded();
-	
-	_executeCall: (apiCall) ->
-		
 		url = @_getUrl(apiCall)
 
 		xmlhttp = new XMLHttpRequest();
@@ -35,7 +28,6 @@ class KanbanizeJS
 				else 
 					console.log('something else other than 200 was returned')
 
-		#$.ajax 
 		xmlhttp.open("POST", url, true);
 		xmlhttp.send();
 		
@@ -48,7 +40,7 @@ class KanbanizeJS
 				password: @password
 		}
 	
-		return @call(call);
+		@call(call);
 
 
 window.KanbanizeJS = KanbanizeJS
