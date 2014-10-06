@@ -4,31 +4,40 @@ class KanbanizeJS
 	constructor: (options) -> 
 		{ @email, @password, domain } = options
 		domain = if domain? then domain+'.' else ''
-		@kanbanize_url = "http://'#{domain}#{@BASE_URL}"
+		@kanbanize_url = "http://#{domain}#{@BASE_URL}"
 
-		#extend {}, {}
+	_getUrl: (call) ->
+		url = [ @kanbanize_url, call.function ]
+		for key, val of call.data
+			url.push key, encodeURIComponent(val)
+		url.join('/')
 
 	call: (apiCall) ->
 
-		call = @executeCall(apiCall)
 		
+		if apiCall.function != 'login' && !@apikey?
+			l = @login()
+			@apikey = l.apikey
+
+		call = @_executeCall(apiCall)
 
 		return call.getResponseDecoded();
 	
-	executeCall: (apiCall) ->
+	_executeCall: (apiCall) ->
 		
-		if apiCall.function != 'login' && !@apikey?
-			$l = @login()
-			@apikey = $l['apikey']
+		url = @_getUrl(apiCall)
 
-		url = @kanbanize_url + "/" + apiCall.function
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = () ->
+			if (xmlhttp.readyState == 4 )
+				if(xmlhttp.status == 200)
+					console.log('good')
+				else 
+					console.log('something else other than 200 was returned')
 
-		params = (for key, val of apiCall.data
-			key+'/'+val).join '/'
-
-
-		$.ajax url + params
-
+		#$.ajax 
+		xmlhttp.open("POST", url, true);
+		xmlhttp.send();
 		
 
 	login: () ->
