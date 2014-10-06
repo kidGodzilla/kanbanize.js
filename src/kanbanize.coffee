@@ -3,10 +3,10 @@ class KanbanizeJS
 
 	constructor: (options) -> 
 		{ @email, @password, domain } = options
-		domain = domain ? ''
-		@kanbanize_url = "http://'#{domain}.#{@BASE_URL}"
+		domain = if domain? then domain+'.' else ''
+		@kanbanize_url = "http://'#{domain}#{@BASE_URL}"
 
-		extend {}, {}
+		#extend {}, {}
 
 	call: (apiCall) ->
 
@@ -40,3 +40,6 @@ class KanbanizeJS
 		}
 	
 		return @call(call);
+
+
+window.KanbanizeJS = KanbanizeJS

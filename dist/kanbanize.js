@@ -7,9 +7,8 @@
     function KanbanizeJS(options) {
       var domain;
       this.email = options.email, this.password = options.password, domain = options.domain;
-      domain = domain != null ? domain : '';
-      this.kanbanize_url = "http://'" + domain + "." + this.BASE_URL;
-      extend({}, {});
+      domain = domain != null ? domain + '.' : '';
+      this.kanbanize_url = "http://'" + domain + this.BASE_URL;
     }
 
     KanbanizeJS.prototype.call = function(apiCall) {
@@ -53,5 +52,7 @@
     return KanbanizeJS;
 
   })();
+
+  window.KanbanizeJS = KanbanizeJS;
 
 }).call(this);
