@@ -12,7 +12,7 @@ class KanbanizeJS
 			url.push key, encodeURIComponent(val)
 		url.join('/')
 
-	call: (apiCall) ->
+	_call: (apiCall) ->
 
 		if apiCall.function != 'login' && !@apikey?
 			l = @login()
@@ -40,7 +40,7 @@ class KanbanizeJS
 				password: @password
 		}
 	
-		@call(call);
+		@_call(call);
 
 
 window.KanbanizeJS = KanbanizeJS
